@@ -1,0 +1,36 @@
+#########
+mirrors revise
+pacman-mirrors -i -c China -m rank
+#########
+give root user
+su
+#########
+search pkg number
+ls /var/cache/pacman/pkg | wc -l
+#########
+查看系统占用空间大小
+du -sh /var/cache/pacman/pkg
+#########
+保留最新的三个版本其余清除
+paccache -r
+#########
+只保留最新版本
+paccache -rk 1
+#########
+删除已经卸载的安装包的缓存
+paccache -ruk0
+pacman -Sc
+########
+删除所有缓存文件
+pacman -Scc
+# 这条命令慎重使用
+#########
+/etc/pacman.d/hooks/clean_package_cache
+自动请理安装包脚本
+#########
+显示基本设置
+neofetch
+		
+
+
+
