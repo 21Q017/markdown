@@ -177,3 +177,12 @@ $ git remote -v
 origin    git@github.com:tianqixin/runoob-git-test.git (fetch)
 origin    git@github.com:tianqixin/runoob-git-test.git (push)
 ```
+
+### 更新github仓库
+
+```shell
+$git add .
+$git commit '本地仓库名称'
+$git push '本地仓库名称' master
+```
+
