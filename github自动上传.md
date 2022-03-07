@@ -182,7 +182,7 @@ origin    git@github.com:tianqixin/runoob-git-test.git (push)
 
 ```shell
 $git add .
-$git commit '本地仓库名称'
+$git commit -m '本地仓库名称'
 $git push '本地仓库名称' master
 ```
 
