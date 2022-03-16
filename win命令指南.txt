@@ -1,0 +1,17 @@
+###
+ipconfig
+ipconfig -a
+ip地址
+###
+netstat -ano	检测已连接的接口
+tasklist
+netstat -ano | findstr ""
+arp -a
+ip->mac的解析
+###
+nslookup
+tracert		拓扑绘测
+ttl生存时间
+###
+
+
