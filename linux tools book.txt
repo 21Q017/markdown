@@ -30,6 +30,9 @@ pacman -Scc
 #########
 显示基本设置
 neofetch
+#########
+hexdump -C
+查看文件二进制格式
 		
 
 
