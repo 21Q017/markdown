@@ -176,7 +176,7 @@ int main()
 
 首先c编译系统把浮点型常量都是按双精度处理,分配8个字节(64位)
 
-对于浮点类型的数据采用单精度类型(float)和双精度类型(double)来存储，float数据占用 32bit,double数据占用 64bit.其实不论是float类型还是double类型，在计算机内存中的存储方式都是遵从IEEE的规范的，float 遵从的是IEEE R32.24 ,而double 遵从的是R64.53。   
+对于浮点类型的数据采用单精度类型(float)和双精度类型(double)来存储，float数据占用 32bit,double数据占用 64bit.其实不论是float类型还是**double类型**，在计算机内存中的存储方式都是遵从IEEE的规范的，float 遵从的是IEEE R32.24 ,而double 遵从的是R64.53。   
 
 无论是单精度还是双精度，在内存存储中都分为3个部分：  
 
@@ -550,19 +550,24 @@ out[0]:a = 0, b = 3
 
 {}表示一个语句块或者叫程序块
 
+在条件判断的时候要注意`` =``和``==``
+
 ## 1.if语句
 
+里面的判断表达式是判断0(不执行)或非0(执行)值
+
+### (1)if
+
+```c
 if (表达式或者条件)
-
 {
-
-​	执行的语句块
-
+	(执行的语句块)
 }
+```
 
 ```C
 #include <stdio.h>
-int mian()
+int main()
 {
 	int i;
 	scanf("%d", &i);	//&的作用:取i的地址(指针会学)
@@ -574,11 +579,150 @@ int mian()
 }
 ```
 
+### (2)if-else
+
+```C
+if(表达式)
+{
+	(执行的语句块)
+}
+else
+{
+    (执行的语句块)
+}
+
+```
+
+```C
+#include <stdio.h>
+int main()
+{
+	int i;
+	scanf("%d", &i);	//&的作用:取i的地址(指针会学)
+	if (i >= 18)
+	{
+		printf("TURE\n");
+	}
+    else
+    {
+        printf("False\n");
+    }
+	return 0;
+}
+```
+
+### (3)if-else if-else
+
+```c
+if(表达式1)
+{
+	(执行的语句块)
+}
+else if(表达式2)
+{
+    (执行的语句块)
+}
+else if(表达式3)
+{
+    (执行的语句块)
+}
+......
+else
+{
+    (执行的语句块)
+}
+
+```
+
 ## 2.swith语句
+
+```
+switch(表达式)
+{
+	case 常量表达式1: 语句块; break;
+	case 常量表达式2: 语句块; break;
+	......
+	default: 语句块; break;
+}
+```
+
+
 
 ## 3.循环嵌套
 
+循环的结构组成
+
+~~~ C
+int count = 0;				//初始化计数器
+while (count < 10)			//循环条件
+{
+	语句块;
+	count ++;				//更新计数器
+}
+~~~
+
+
+
+在嵌套语句中常用的函数用break和continue
+
+但是break只能跳出本层循环
+
 ## 4.while和do while
+
+```
+while(表达式)
+{
+	循环体
+}
+```
+
+```c
+#include <stdio.h>
+int main()
+{
+	int i = 1, sum = 0;
+	while(i <= 100)
+	{
+		sum += i;
+		i ++;
+	}
+	printf("%d\n", sum);
+    return 0;
+}
+```
+
+```C
+#include <stdio.h>
+int main()
+{
+	int count = 0;
+	printf("Please input a sentence: ");
+	while(getchar() != '\n')
+	{
+		count ++;
+	}
+	printf("These are %d chars!\n", count);
+	return 0;
+}
+```
+
+这里要注意区分while 和 do-while的区别
+
+while是先循环再去执行
+
+而do-while 是先执行再去循环
+
+
+```
+do
+{
+	循环体
+}
+	
+while(表达式);
+```
+
+
 
 ## 5.for语句循环
 
@@ -594,6 +738,68 @@ int i
 for (i = 0; i <= 9; i++);
 //注意在通常的C语言当中只能在第一个表达式当中定义变量的变量值//
 ```
+
+同时for循环也可以这样使用(就是在for循环中添加循环体):
+
+```C
+include <stdio.h>
+int main()
+{
+	int i = 1, sum = 0;
+	for( 1; i <= 100; i++)
+	{
+		sum += i;
+	}
+	printf("%d\n", sum);
+	return 0;
+}
+```
+
+## 6.break和continue
+
+break语句是跳出当前循环,然后停止循环。
+
+continue语句是跳出条件的循环,然后继续循环,或者可以说跳过循环的语句块,然后在开始循环。
+
+上实例:
+
+```C
+#include <stdio.h>
+int main ()
+{
+   int a = 10;
+   /* do 循环执行 */
+   do
+   {
+      if( a == 15)
+      {
+         /* 跳过迭代 */
+         a = a + 1;
+         continue;
+      }
+      printf("a 的值： %d\n", a);
+      a++;  
+   }
+   while( a < 20 );
+   return 0;
+}
+```
+
+```
+out[0]:
+a 的值： 10
+a 的值： 11
+a 的值： 12
+a 的值： 13
+a 的值： 14
+a 的值： 16
+a 的值： 17
+a 的值： 18
+a 的值： 19
+因为跳过了a = 15的这一次循环
+```
+
+
 
 
 
@@ -708,10 +914,16 @@ debugger(调试器)是用来调试debug的程序。
 
 
 
+## i++和++i
+
+`` i++``先赋值i再自增1,而``++i``是先自增1再赋值i(也就是赋值i + 1)。
+
+`` i--``和``--i``同上
+
 
 
 
 
 # 给自己加一点思考题
 
-1.32位和64位对现代计算机的影响,以及C语言在不同位的计算机上的好处。
+1.32位和64位对现代计算机的影响,以及C语言在不同位的计算机上的好处。                                                      
