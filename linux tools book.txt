@@ -28,11 +28,17 @@ pacman -Scc
 /etc/pacman.d/hooks/clean_package_cache
 自动请理安装包脚本
 #########
+
+
+
 显示基本设置
 neofetch
 #########
 hexdump -C
 查看文件二进制格式
+#########
+file <文件>
+查看文件格式和信息
 		
 
 
