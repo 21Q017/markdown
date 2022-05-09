@@ -826,6 +826,33 @@ python解释器会自动回收内存垃圾
 
 一般先将正则表达式编译为pattern（正则模板）；然后使用pattern模板处理文本，并获得匹配结果
 
+| re模块函数                             | 函数说明 | 函数返回值 |
+| -------------------------------------- | -------- | ---------- |
+| re.compile(pattern[, flags])           |          |            |
+| re.findall(pattern, string[, flags])   |          |            |
+| re.finditer(pattern, string[, flags])  |          |            |
+| re.match(pattern, string, flags=0)     |          |            |
+| re.search(pattern, string, flags=0)    |          |            |
+| re.split(pattern, string, max=0)       |          |            |
+| re.sub(pattern, repl, string, count=0) |          |            |
+| re.purge()                             |          |            |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## python杂项
 
 ### pep规范
